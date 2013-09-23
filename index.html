@@ -11,6 +11,8 @@
   <!-- for deferred -->
   <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
   <script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+  <script src="qunit-promises.js"></script>
+
   <script>
   function delayedHello() {
     var deferred = new $.Deferred();
@@ -28,18 +30,20 @@
     return deferred.promise();
   }
 
-  QUnit.asyncTest("test async promise", function (assert) {
-    assert.ok( 1 == "1", "Passed!" );
-    start();
-  });
-
-  QUnit.asyncTest("test successful promise", function (assert) {
+  // regular custom code testing a successful promise
+  QUnit.asyncTest("test successful promise", 1, function (assert) {
     var promise = delayedHello();
     promise.then(function () {
       assert.ok(true, 'promise resolved successfully');
     }).always(start);
   });
 
+  // qunit-promises assertion
+  QUnit.asyncTest("promise will resolve", 1, function (assert) {
+    assert.willResolve(delayedHello());
+  });
+
+  // regular code to test failed promise
   QUnit.asyncTest("test failed promise", 1, function (assert) {
     var promise = delayedFail();
     promise.then(function () {
@@ -47,6 +51,10 @@
     }, function () {
       assert.ok(true, 'promise failed');
     }).always(start);
+  });
+
+  QUnit.asyncTest("promise will reject", 1, function (assert) {
+    assert.willReject(delayedFail());
   });
   </script>
 </body>
