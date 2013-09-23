@@ -1,6 +1,6 @@
 # qunit-promises
 
-QUnit plugin that adds assertions to deal with promises
+QUnit plugin that adds assertions to check promises quickly
 
 [![endorse][endorse-image]][endorse-url]
 
