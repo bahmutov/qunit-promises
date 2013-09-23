@@ -8,9 +8,9 @@ QUnit plugin that adds assertions to deal with promises
 
 Compared with other testing frameworks designed to deal with async code
 (see [vows](http://vowsjs.org/) for example),
-there is way to much code to check promises when using
+there is way too much boilerplate code to check promises when using
 [QUnit](http://qunitjs.com/). For example, here is an asynchronous unit test
-that checks that the promise resolves successfully with a certain value:
+that checks that a promise resolves successfully with a certain value:
 
 ```javascript
 // function delayedHello returns a promise
@@ -29,7 +29,7 @@ making it very convenient to:
 
 * assert that the promise either resolves or is rejected
 * compare the final value to expected
-* restarts the testing queue
+* restart the testing queue
 
 Same test as above, rewritten using new assertion:
 
@@ -40,7 +40,7 @@ QUnit.asyncTest("test successful promise", 1, function (assert) {
 ```
 ## API
 
-```javascript
+```
 assert.willResolve(fn, [expected value], [message])
 
 - fn: function that returns a promise that should be resolved
