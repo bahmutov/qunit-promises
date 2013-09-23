@@ -48,7 +48,7 @@ assert.willResolve(fn, [expected value], [message])
 - message (optional): to push in the log
 ```
 
-```javascript
+```
 assert.willReject(fn, [expected value], [message])
 
 - fn: function that returns a promise that should be rejected (failed)
