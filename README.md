@@ -1,7 +1,9 @@
 # qunit-promises
 
-QUnit plugin that adds assertions to check promises quickly
+QUnit plugin that adds assertions to check promises quickly, availabe
+as **qunit-promises** on [bower](http://sindresorhus.com/bower-components/).
 
+[Test page](http://glebbahmutov.com/qunit-promises/)
 [![endorse][endorse-image]][endorse-url]
 
 ## Problem
