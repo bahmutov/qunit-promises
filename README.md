@@ -46,7 +46,7 @@ QUnit.asyncTest("test successful promise", 1, function (assert) {
 assert.willResolve(fn, [expected value], [message])
 
 - fn: function that returns a promise that should be resolved
-- expected value (optional): to compare with the value resolved
+- expected value (optional): to compare with the resolved value
 - message (optional): to push in the log
 ```
 
@@ -54,9 +54,21 @@ assert.willResolve(fn, [expected value], [message])
 assert.willReject(fn, [expected value], [message])
 
 - fn: function that returns a promise that should be rejected (failed)
-- expected value (optional): to compare with the value rejected
+- expected value (optional): to compare with the rejected value
 - message (optional): to push in the log
 ```
+
+## Install
+
+Include _qunit-promises.js_ after _qunit.js_, new methods are
+added to the **assert** object.
+
+```html
+<script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+<script src="qunit-promises.js"></script>
+```
+For full example, see the [test page](http://glebbahmutov.com/qunit-promises/).
+
 
 ## Small print
 
