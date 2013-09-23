@@ -33,8 +33,8 @@
   // regular custom code testing a successful promise
   QUnit.asyncTest("test successful promise", 1, function (assert) {
     var promise = delayedHello();
-    promise.then(function () {
-      assert.ok(true, 'promise resolved successfully');
+    promise.then(function (actual) {
+      assert.equal(actual, 'hello', 'promise resolved with "hello"');
     }).always(start);
   });
 
@@ -43,18 +43,39 @@
     assert.willResolve(delayedHello());
   });
 
+  QUnit.asyncTest("promise will resolve with message", 1, function (assert) {
+    assert.willResolve(delayedHello(), undefined, 'the promise is ok');
+  });
+
+  QUnit.asyncTest("promise will resolve with value", 1, function (assert) {
+    assert.willResolve(delayedHello(), 'hello', 'returns value "hello"');
+  });
+
   // regular code to test failed promise
   QUnit.asyncTest("test failed promise", 1, function (assert) {
     var promise = delayedFail();
     promise.then(function () {
       assert.ok(false, 'promise failed to fail!');
-    }, function () {
-      assert.ok(true, 'promise failed');
+    }, function (actual) {
+      assert.equal(actual, 'bye', 'promise failed');
     }).always(start);
   });
 
   QUnit.asyncTest("promise will reject", 1, function (assert) {
     assert.willReject(delayedFail());
+  });
+
+  QUnit.asyncTest("promise will reject with value", 1, function (assert) {
+    assert.willReject(delayedFail(), 'bye');
+  });
+
+  QUnit.asyncTest("promise will reject with value + message", 1, function (assert) {
+    assert.willReject(delayedFail(), 'bye', 'this is failed promise');
+  });
+
+  // advanced
+  QUnit.asyncTest("two resolved promises in sequence", 1, function (assert) {
+    assert.willResolve(delayedHello().then(delayedHello));
   });
   </script>
 </body>

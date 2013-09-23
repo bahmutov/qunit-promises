@@ -1,19 +1,23 @@
 QUnit.extend(QUnit.assert, {
-  willResolve: function (promise) {
+  willResolve: function (promise, expected, message) {
     if (!promise) {
       QUnit.push(false, undefined, 'a promise', 'expected a promise that would resolve');
       QUnit.start();
       return;
     }
 
-    promise.then(function () {
-      QUnit.push(true, true, true, 'promise resolved');
+    promise.then(function (actual) {
+      if ('undefined' === typeof expected) {
+        QUnit.push(true, true, true, message);
+      } else {
+        QUnit.push(QUnit.equiv(actual, expected), actual, expected, message);
+      }
     }, function () {
-      QUnit.push(false, true, true, 'promise rejected (but should have been resolved)');
+      QUnit.push(false, actual, expected, 'promise rejected (but should have been resolved)');
     }).always(start);
   },
 
-  willReject: function (promise) {
+  willReject: function (promise, expected, message) {
     if (!promise) {
       QUnit.push(false, undefined, 'a promise', 'expected a promise that would reject');
       QUnit.start();
@@ -21,9 +25,13 @@ QUnit.extend(QUnit.assert, {
     }
 
     promise.then(function () {
-      QUnit.push(false, true, true, 'promise resolved (but should have been rejected)');
-    }, function () {
-      QUnit.push(true, true, true, 'promise rejected');
+      QUnit.push(false, actual, expected, 'promise resolved (but should have been rejected)');
+    }, function (actual) {
+      if ('undefined' === typeof expected) {
+        QUnit.push(true, true, true, message);
+      } else {
+        QUnit.push(QUnit.equiv(actual, expected), actual, expected, message);
+      }
     }).always(start);
   }
 });
