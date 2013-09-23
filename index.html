@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QUnit Promises Assertions Example</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <!-- for deferred -->
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+  <script>
+  function delayedHello() {
+    var deferred = new $.Deferred();
+    setTimeout(function () {
+      deferred.resolve('hello');
+    }, 1000);
+    return deferred.promise();
+  }
+
+  function delayedFail() {
+    var deferred = new $.Deferred();
+    setTimeout(function () {
+      deferred.reject('bye');
+    }, 1000);
+    return deferred.promise();
+  }
+
+  QUnit.asyncTest("test async promise", function (assert) {
+    assert.ok( 1 == "1", "Passed!" );
+    start();
+  });
+
+  QUnit.asyncTest("test successful promise", function (assert) {
+    var promise = delayedHello();
+    promise.then(function () {
+      assert.ok(true, 'promise resolved successfully');
+    }).always(start);
+  });
+
+  QUnit.asyncTest("test failed promise", 1, function (assert) {
+    var promise = delayedFail();
+    promise.then(function () {
+      assert.ok(false, 'promise failed to fail!');
+    }, function () {
+      assert.ok(true, 'promise failed');
+    }).always(start);
+  });
+  </script>
+</body>
+</html>
