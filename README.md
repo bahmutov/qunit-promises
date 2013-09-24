@@ -1,7 +1,16 @@
 # qunit-promises
 
+<<<<<<< HEAD
 QUnit plugin that adds assertions to check promises quickly
 
+=======
+QUnit plugin that adds assertions to check promises, availabe
+as **qunit-promises** on [bower](http://sindresorhus.com/bower-components/).
+[Test page](http://glebbahmutov.com/qunit-promises/)
+
+[![Build status][ci-image]][ci-url]
+[![dependencies][dependencies-image]][dependencies-url]
+>>>>>>> master
 [![endorse][endorse-image]][endorse-url]
 
 ## Problem
@@ -35,11 +44,16 @@ Same test as above, rewritten using new assertion:
 
 ```javascript
 QUnit.asyncTest("test successful promise", 1, function (assert) {
+<<<<<<< HEAD
     assert.willResolve(delayedHello(), 'hello', 'returns value "hello"');
+=======
+    assert.willEqual(delayedHello(), 'hello', 'returns value "hello"');
+>>>>>>> master
 });
 ```
 ## API
 
+<<<<<<< HEAD
 ```
 assert.willResolve(fn, [expected value], [message])
 
@@ -56,11 +70,82 @@ assert.willReject(fn, [expected value], [message])
 - message (optional): to push in the log
 ```
 
+=======
+### Successful promises
+
+```
+assert.will(fn, [message])
+
+- fn: function that returns a promise that should be resolved
+- message (optional): to push in the log
+```
+
+```
+assert.willEqual(fn, expected, [message])
+
+- fn: function that returns a promise that should be resolved
+- expected: to compare with the resolved value using ==
+- message (optional): to push in the log
+```
+
+```
+assert.willDeepEqual(fn, expected, [message])
+
+- fn: function that returns a promise that should be resolved
+- expected value: to compare with the resolved value using QUnit.equiv
+- message (optional): to push in the log
+```
+
+### Rejected promises
+
+```
+assert.wont(fn, [message])
+
+- fn: function that returns a promise that should be rejected (failed)
+- message (optional): to push in the log
+```
+
+```
+assert.wontEqual(fn, expected, [message])
+
+- fn: function that returns a promise that should be rejected (failed)
+- expected: to compare with the rejected value using ==
+- message (optional): to push in the log
+```
+
+```
+assert.wontDeepEqual(fn, expected, [message])
+
+- fn: function that returns a promise that should be rejected (failed)
+- expected: to compare with the rejected value using QUnit.equiv
+- message (optional): to push in the log
+```
+
+## Install
+
+Include _qunit-promises.js_ after _qunit.js_, new methods are
+added to the **assert** object.
+
+```html
+<script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+<script src="qunit-promises.js"></script>
+```
+For full example, see the [test page](http://glebbahmutov.com/qunit-promises/).
+
+
+>>>>>>> master
 ## Small print
 
 Author: Gleb Bahmutov &copy; 2013
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 
+<<<<<<< HEAD
+=======
+[ci-image]: https://travis-ci.org/bahmutov/qunit-promises.png?branch=master
+[ci-url]: https://travis-ci.org/bahmutov/qunit-promises
+[dependencies-image]: https://david-dm.org/bahmutov/qunit-promises.png
+[dependencies-url]: https://david-dm.org/bahmutov/qunit-promises
+>>>>>>> master
 [endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
 [endorse-url]: https://coderwall.com/bahmutov

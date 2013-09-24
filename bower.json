@@ -1,0 +1,26 @@
+{
+  "name": "qunit-promises",
+  "main": "qunit-promises.js",
+  "version": "0.0.4",
+  "authors": [
+    "Gleb Bahmutov <gleb.bahmutov@gmail.com>"
+  ],
+  "description": "QUnit plugin that adds assertions to check promises quickly",
+  "keywords": [
+    "qunit",
+    "promises",
+    "test",
+    "assert"
+  ],
+  "license": "MIT",
+  "homepage": "http://glebbahmutov.com/qunit-promises",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "Gruntfile.js",
+    "package.json"
+  ]
+}
