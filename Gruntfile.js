@@ -11,6 +11,9 @@ module.exports = function (grunt) {
       'default': {
         src: [ 'Gruntfile.js', 'qunit-promises.js' ]
       }
+    },
+    qunit: {
+      all: ['index.html']
     }
   });
 
@@ -19,5 +22,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-deps-ok');
   grunt.loadNpmTasks('grunt-contrib-qunit');
 
-  grunt.registerTask('default', ['deps-ok', 'jshint']);
+  grunt.registerTask('default', ['deps-ok', 'jshint', 'qunit']);
 };
