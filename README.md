@@ -1,16 +1,11 @@
 # qunit-promises
 
-<<<<<<< HEAD
-QUnit plugin that adds assertions to check promises quickly
-
-=======
 QUnit plugin that adds assertions to check promises, availabe
 as **qunit-promises** on [bower](http://sindresorhus.com/bower-components/).
 [Test page](http://glebbahmutov.com/qunit-promises/)
 
 [![Build status][ci-image]][ci-url]
 [![dependencies][dependencies-image]][dependencies-url]
->>>>>>> master
 [![endorse][endorse-image]][endorse-url]
 
 ## Problem
@@ -44,33 +39,11 @@ Same test as above, rewritten using new assertion:
 
 ```javascript
 QUnit.asyncTest("test successful promise", 1, function (assert) {
-<<<<<<< HEAD
-    assert.willResolve(delayedHello(), 'hello', 'returns value "hello"');
-=======
     assert.willEqual(delayedHello(), 'hello', 'returns value "hello"');
->>>>>>> master
 });
 ```
 ## API
 
-<<<<<<< HEAD
-```
-assert.willResolve(fn, [expected value], [message])
-
-- fn: function that returns a promise that should be resolved
-- expected value (optional): to compare with the value resolved
-- message (optional): to push in the log
-```
-
-```
-assert.willReject(fn, [expected value], [message])
-
-- fn: function that returns a promise that should be rejected (failed)
-- expected value (optional): to compare with the value rejected
-- message (optional): to push in the log
-```
-
-=======
 ### Successful promises
 
 ```
@@ -133,19 +106,15 @@ added to the **assert** object.
 For full example, see the [test page](http://glebbahmutov.com/qunit-promises/).
 
 
->>>>>>> master
 ## Small print
 
 Author: Gleb Bahmutov &copy; 2013
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 
-<<<<<<< HEAD
-=======
 [ci-image]: https://travis-ci.org/bahmutov/qunit-promises.png?branch=master
 [ci-url]: https://travis-ci.org/bahmutov/qunit-promises
 [dependencies-image]: https://david-dm.org/bahmutov/qunit-promises.png
 [dependencies-url]: https://david-dm.org/bahmutov/qunit-promises
->>>>>>> master
 [endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
 [endorse-url]: https://coderwall.com/bahmutov

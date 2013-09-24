@@ -21,19 +21,6 @@
   <script>
   function delayedHello() {
     var deferred = new $.Deferred();
-<<<<<<< HEAD
-    setTimeout(function () {
-      deferred.resolve('hello');
-    }, 1000);
-    return deferred.promise();
-  }
-
-  function delayedFail() {
-    var deferred = new $.Deferred();
-    setTimeout(function () {
-      deferred.reject('bye');
-    }, 1000);
-=======
     setTimeout(function () { deferred.resolve('hello'); }, 100);
     return deferred.promise();
   }
@@ -53,7 +40,6 @@
   function delayedOneFail() {
     var deferred = new $.Deferred();
     setTimeout(function () { deferred.reject(1); }, 100);
->>>>>>> master
     return deferred.promise();
   }
 
@@ -67,17 +53,6 @@
 
   // qunit-promises assertion
   QUnit.asyncTest("promise will resolve", 1, function (assert) {
-<<<<<<< HEAD
-    assert.willResolve(delayedHello());
-  });
-
-  QUnit.asyncTest("promise will resolve with message", 1, function (assert) {
-    assert.willResolve(delayedHello(), undefined, 'the promise is ok');
-  });
-
-  QUnit.asyncTest("promise will resolve with value", 1, function (assert) {
-    assert.willResolve(delayedHello(), 'hello', 'returns value "hello"');
-=======
     assert.will(delayedHello());
   });
 
@@ -91,16 +66,11 @@
 
   QUnit.asyncTest("compare value using deep equality", 1, function (assert) {
     assert.willEqual(delayedOne(), 1, 'returns 1');
->>>>>>> master
   });
 
   // regular code to test failed promise
   QUnit.asyncTest("test failed promise", 1, function (assert) {
-<<<<<<< HEAD
-    var promise = delayedFail();
-=======
     var promise = delayedHelloFail();
->>>>>>> master
     promise.then(function () {
       assert.ok(false, 'promise failed to fail!');
     }, function (actual) {
@@ -109,22 +79,6 @@
   });
 
   QUnit.asyncTest("promise will reject", 1, function (assert) {
-<<<<<<< HEAD
-    assert.willReject(delayedFail());
-  });
-
-  QUnit.asyncTest("promise will reject with value", 1, function (assert) {
-    assert.willReject(delayedFail(), 'bye');
-  });
-
-  QUnit.asyncTest("promise will reject with value + message", 1, function (assert) {
-    assert.willReject(delayedFail(), 'bye', 'this is failed promise');
-  });
-
-  // advanced
-  QUnit.asyncTest("two resolved promises in sequence", 1, function (assert) {
-    assert.willResolve(delayedHello().then(delayedHello));
-=======
     assert.wont(delayedHelloFail(), 'promise fails');
   });
 
@@ -144,7 +98,6 @@
   // advanced
   QUnit.asyncTest("two resolved promises in sequence", 1, function (assert) {
     assert.willEqual(delayedHello().then(delayedHello), 'hello', 'promises chained');
->>>>>>> master
   });
   </script>
 </body>
