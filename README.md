@@ -37,24 +37,58 @@ Same test as above, rewritten using new assertion:
 
 ```javascript
 QUnit.asyncTest("test successful promise", 1, function (assert) {
-    assert.willResolve(delayedHello(), 'hello', 'returns value "hello"');
+    assert.willEqual(delayedHello(), 'hello', 'returns value "hello"');
 });
 ```
 ## API
 
+### Successful promises
+
 ```
-assert.willResolve(fn, [expected value], [message])
+assert.will(fn, [message])
 
 - fn: function that returns a promise that should be resolved
-- expected value (optional): to compare with the resolved value
 - message (optional): to push in the log
 ```
 
 ```
-assert.willReject(fn, [expected value], [message])
+assert.willEqual(fn, expected, [message])
+
+- fn: function that returns a promise that should be resolved
+- expected: to compare with the resolved value using ==
+- message (optional): to push in the log
+```
+
+```
+assert.willDeepEqual(fn, expected, [message])
+
+- fn: function that returns a promise that should be resolved
+- expected value: to compare with the resolved value using QUnit.equiv
+- message (optional): to push in the log
+```
+
+## Rejected promises
+
+```
+assert.wont(fn, [message])
 
 - fn: function that returns a promise that should be rejected (failed)
-- expected value (optional): to compare with the rejected value
+- message (optional): to push in the log
+```
+
+```
+assert.wontEqual(fn, expected, [message])
+
+- fn: function that returns a promise that should be rejected (failed)
+- expected: to compare with the rejected value using ==
+- message (optional): to push in the log
+```
+
+```
+assert.wontDeepEqual(fn, expected, [message])
+
+- fn: function that returns a promise that should be rejected (failed)
+- expected: to compare with the rejected value using QUnit.equiv
 - message (optional): to push in the log
 ```
 
