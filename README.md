@@ -69,7 +69,7 @@ assert.willDeepEqual(fn, expected, [message])
 - message (optional): to push in the log
 ```
 
-## Rejected promises
+### Rejected promises
 
 ```
 assert.wont(fn, [message])
