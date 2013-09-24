@@ -12,9 +12,9 @@ QUnit.extend(QUnit.assert, {
       } else {
         QUnit.push(QUnit.equiv(actual, expected), actual, expected, message);
       }
-    }, function () {
+    }, function (actual) {
       QUnit.push(false, actual, expected, 'promise rejected (but should have been resolved)');
-    }).always(start);
+    }).always(QUnit.start);
   },
 
   willReject: function (promise, expected, message) {
@@ -24,7 +24,7 @@ QUnit.extend(QUnit.assert, {
       return;
     }
 
-    promise.then(function () {
+    promise.then(function (actual) {
       QUnit.push(false, actual, expected, 'promise resolved (but should have been rejected)');
     }, function (actual) {
       if ('undefined' === typeof expected) {
@@ -32,6 +32,6 @@ QUnit.extend(QUnit.assert, {
       } else {
         QUnit.push(QUnit.equiv(actual, expected), actual, expected, message);
       }
-    }).always(start);
+    }).always(QUnit.start);
   }
 });
