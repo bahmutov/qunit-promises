@@ -1,6 +1,6 @@
 {
   "name": "qunit-promises",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "QUnit plugin that adds assertions to check promises quickly",
   "main": "qunit-promises.js",
   "dependencies": {
@@ -12,7 +12,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt"
   },
   "repository": {
     "type": "git",
