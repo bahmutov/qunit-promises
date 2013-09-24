@@ -4,6 +4,8 @@ QUnit plugin that adds assertions to check promises, availabe
 as **qunit-promises** on [bower](http://sindresorhus.com/bower-components/).
 [Test page](http://glebbahmutov.com/qunit-promises/)
 
+[![Build status][ci-image]][ci-url]
+[![dependencies][dependencies-image]][dependencies-url]
 [![endorse][endorse-image]][endorse-url]
 
 ## Problem
@@ -110,5 +112,9 @@ Author: Gleb Bahmutov &copy; 2013
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 
+[ci-image]: https://travis-ci.org/bahmutov/qunit-promises.png?branch=master
+[ci-url]: https://travis-ci.org/bahmutov/qunit-promises
+[dependencies-image]: https://david-dm.org/bahmutov/qunit-promises.png
+[dependencies-url]: https://david-dm.org/bahmutov/qunit-promises
 [endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
 [endorse-url]: https://coderwall.com/bahmutov
