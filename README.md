@@ -4,8 +4,10 @@ QUnit plugin that adds assertions to check promises, availabe
 as **qunit-promises** on [bower](http://sindresorhus.com/bower-components/).
 [Test page](http://glebbahmutov.com/qunit-promises/)
 
+[![NPM][csv-load-sync-icon]][csv-load-sync-url]
 [![Build status][ci-image]][ci-url]
 [![dependencies][dependencies-image]][dependencies-url]
+
 [![endorse][endorse-image]][endorse-url]
 
 ## Problem
@@ -123,6 +125,8 @@ Author: Gleb Bahmutov &copy; 2013
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 
+[qunit-promises-icon]: https://nodei.co/npm/qunit-promises.png?downloads=true
+[qunit-promises-url]: https://npmjs.org/package/qunit-promises
 [ci-image]: https://travis-ci.org/bahmutov/qunit-promises.png?branch=master
 [ci-url]: https://travis-ci.org/bahmutov/qunit-promises
 [dependencies-image]: https://david-dm.org/bahmutov/qunit-promises.png
