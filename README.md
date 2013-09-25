@@ -33,7 +33,8 @@ making it very convenient to:
 
 * assert that the promise either resolves or is rejected
 * compare the final value to expected
-* restart the testing queue
+* **restart** the testing queue
+	* so you don't have to call `QUnit.start()`
 
 Same test as above, rewritten using new assertion:
 
@@ -102,9 +103,19 @@ added to the **assert** object.
 ```html
 <script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
 <script src="qunit-promises.js"></script>
+<script src="tests.js"></script>
 ```
 For full example, see the [test page](http://glebbahmutov.com/qunit-promises/).
 
+## Advanced
+
+*qunit-promises* simplify the tests when there is single promise to be evaluated.
+In other cases, you need to combine promises (chain, or evaluate in parallel)
+yourself before calling *assert.will...* as the last step.
+
+```javascript
+assert.will(promiseOne().then(promiseTwo), 'one, then two succeeded');
+```
 
 ## Small print
 
