@@ -4,7 +4,7 @@ QUnit plugin that adds assertions to check promises, availabe
 as **qunit-promises** on [bower](http://sindresorhus.com/bower-components/).
 [Test page](http://glebbahmutov.com/qunit-promises/)
 
-[![NPM][csv-load-sync-icon]][csv-load-sync-url]
+[![NPM][qunit-promises-icon]][qunit-promises-url]
 [![Build status][ci-image]][ci-url]
 [![dependencies][dependencies-image]][dependencies-url]
 
