@@ -1,9 +1,12 @@
 /*global module:false*/
 module.exports = function (grunt) {
+  // time tasks
+  module.require('time-grunt')(grunt);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    datetime: Date.now(),
+    //datetime: Date.now(),
+    
     jshint: {
       options: {
         jshintrc: '.jshintrc',
@@ -12,8 +15,17 @@ module.exports = function (grunt) {
         src: [ '*.js' ]
       }
     },
+    
     qunit: {
       all: ['index.html']
+    },
+
+    'node-qunit': {
+      all: {
+        deps: './qunit-promises.js',
+        code: './test/node-tests.js',
+        tests: './test/node-tests.js'
+      }
     }
   });
 
@@ -21,6 +33,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-deps-ok');
   grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-node-qunit');
 
-  grunt.registerTask('default', ['deps-ok', 'jshint', 'qunit']);
+  grunt.registerTask('default', ['deps-ok', 'jshint', 'node-qunit', 'qunit']);
 };
