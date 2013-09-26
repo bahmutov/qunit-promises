@@ -4,8 +4,10 @@ QUnit plugin that adds assertions to check promises, availabe
 as **qunit-promises** on [bower](http://sindresorhus.com/bower-components/).
 [Test page](http://glebbahmutov.com/qunit-promises/)
 
+[![NPM][qunit-promises-icon]][qunit-promises-url]
 [![Build status][ci-image]][ci-url]
 [![dependencies][dependencies-image]][dependencies-url]
+
 [![endorse][endorse-image]][endorse-url]
 
 ## Problem
@@ -19,7 +21,8 @@ that checks that a promise resolves successfully with a certain value:
 ```javascript
 // function delayedHello returns a promise
 
-QUnit.asyncTest("test successful promise", 1, function (assert) {
+QUnit.test("test successful promise", 1, function (assert) {
+	QUnit.stop();
     var promise = delayedHello();
     promise.then(function (actual) {
         assert.equal(actual, 'hello', 'promise resolved with "hello"');
@@ -28,17 +31,21 @@ QUnit.asyncTest("test successful promise", 1, function (assert) {
 ```
 ## Promises plugin
 
-**qunit-promises** plugin adds a pair of methods to QUnit's **assert** object,
-making it very convenient to:
+**qunit-promises** plugin adds a pair of methods to QUnit's 
+**assert** object. It does these things for you:
 
-* assert that the promise either resolves or is rejected
-* compare the final value to expected
-* restart the testing queue
+* **stops** current test queue
+	* use QUnit.test(), not QUnit.asyncTest()
+	* do not call QUnit.stop()
+* asserts that the promise either resolves or is rejected
+* compares the final value to expected
+* **restarts** the testing queue
+	* so you don't have to call `QUnit.start()`
 
 Same test as above, rewritten using new assertion:
 
 ```javascript
-QUnit.asyncTest("test successful promise", 1, function (assert) {
+QUnit.test("test successful promise", 1, function (assert) {
     assert.willEqual(delayedHello(), 'hello', 'returns value "hello"');
 });
 ```
@@ -102,9 +109,19 @@ added to the **assert** object.
 ```html
 <script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
 <script src="qunit-promises.js"></script>
+<script src="tests.js"></script>
 ```
 For full example, see the [test page](http://glebbahmutov.com/qunit-promises/).
 
+## Advanced
+
+*qunit-promises* simplify the tests when there is single promise to be evaluated.
+In other cases, you need to combine promises (chain, or evaluate in parallel)
+yourself before calling *assert.will...* as the last step.
+
+```javascript
+assert.will(promiseOne().then(promiseTwo), 'one, then two succeeded');
+```
 
 ## Small print
 
@@ -112,6 +129,8 @@ Author: Gleb Bahmutov &copy; 2013
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 
+[qunit-promises-icon]: https://nodei.co/npm/qunit-promises.png?downloads=true
+[qunit-promises-url]: https://npmjs.org/package/qunit-promises
 [ci-image]: https://travis-ci.org/bahmutov/qunit-promises.png?branch=master
 [ci-url]: https://travis-ci.org/bahmutov/qunit-promises
 [dependencies-image]: https://david-dm.org/bahmutov/qunit-promises.png

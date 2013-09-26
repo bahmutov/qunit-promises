@@ -9,7 +9,7 @@ module.exports = function (grunt) {
         jshintrc: '.jshintrc',
       },
       'default': {
-        src: [ 'Gruntfile.js', 'qunit-promises.js' ]
+        src: [ '*.js' ]
       }
     },
     qunit: {
