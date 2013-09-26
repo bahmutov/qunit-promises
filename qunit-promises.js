@@ -1,19 +1,22 @@
 (function (QUnit) {
-  function isValid(promise) {
+  function verifyPromise(promise) {
     if (!promise) {
-      QUnit.push(false, undefined, 'a promise', 'expected a promise that would resolve');
-      QUnit.start();
-      return false;
-    } else {
-      return true;
+      throw new Error('expected a promise object');
+    }
+    if (typeof promise.then !== 'function') {
+      throw new Error('promise object does not have .then function');
+    }
+    if (typeof promise.always !== 'function') {
+      throw new Error('promise object does not have .always function');
     }
   }
 
   QUnit.extend(QUnit.assert, {
     // resolved promises
     will: function (promise, message) {
-      if (!isValid(promise)) { return; }
+      verifyPromise(promise);
 
+      QUnit.stop();
       promise.then(function () {
         QUnit.push(true, undefined, undefined, message);
       }, function () {
@@ -22,8 +25,9 @@
     },
 
     willEqual: function (promise, expected, message) {
-      if (!isValid(promise)) { return; }
+      verifyPromise(promise);
 
+      QUnit.stop();
       promise.then(function (actual) {
         QUnit.push(actual == expected, actual, expected, message);
       }, function (actual) {
@@ -32,8 +36,9 @@
     },
 
     willDeepEqual: function (promise, expected, message) {
-      if (!isValid(promise)) { return; }
+      verifyPromise(promise);
 
+      QUnit.stop();
       promise.then(function (actual) {
         QUnit.push(QUnit.equiv(actual, expected), actual, expected, message);
       }, function (actual) {
@@ -43,8 +48,9 @@
 
     // rejected promises
     wont: function (promise, message) {
-      if (!isValid(promise)) { return; }
+      verifyPromise(promise);
 
+      QUnit.stop();
       promise.then(function () {
         QUnit.push(false, undefined, undefined, 'promise resolved (but should have been rejected)');
       }, function () {
@@ -53,8 +59,9 @@
     },
 
     wontEqual: function (promise, expected, message) {
-      if (!isValid(promise)) { return; }
+      verifyPromise(promise);
 
+      QUnit.stop();
       promise.then(function (actual) {
         QUnit.push(false, actual, expected, 'promise resolved (but should have been rejected)');
       }, function (actual) {

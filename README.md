@@ -21,7 +21,8 @@ that checks that a promise resolves successfully with a certain value:
 ```javascript
 // function delayedHello returns a promise
 
-QUnit.asyncTest("test successful promise", 1, function (assert) {
+QUnit.test("test successful promise", 1, function (assert) {
+	QUnit.stop();
     var promise = delayedHello();
     promise.then(function (actual) {
         assert.equal(actual, 'hello', 'promise resolved with "hello"');
@@ -30,18 +31,21 @@ QUnit.asyncTest("test successful promise", 1, function (assert) {
 ```
 ## Promises plugin
 
-**qunit-promises** plugin adds a pair of methods to QUnit's **assert** object,
-making it very convenient to:
+**qunit-promises** plugin adds a pair of methods to QUnit's 
+**assert** object. It does these things for you:
 
-* assert that the promise either resolves or is rejected
-* compare the final value to expected
-* **restart** the testing queue
+* **stops** current test queue
+	* use QUnit.test(), not QUnit.asyncTest()
+	* do not call QUnit.stop()
+* asserts that the promise either resolves or is rejected
+* compares the final value to expected
+* **restarts** the testing queue
 	* so you don't have to call `QUnit.start()`
 
 Same test as above, rewritten using new assertion:
 
 ```javascript
-QUnit.asyncTest("test successful promise", 1, function (assert) {
+QUnit.test("test successful promise", 1, function (assert) {
     assert.willEqual(delayedHello(), 'hello', 'returns value "hello"');
 });
 ```

@@ -23,7 +23,8 @@ function delayedOneFail() {
 }
 
 // regular custom code testing a successful promise
-QUnit.asyncTest('test successful promise', 1, function (assert) {
+QUnit.test('test successful promise', 1, function (assert) {
+  QUnit.stop();
   var promise = delayedHello();
   promise.then(function (actual) {
     assert.equal(actual, 'hello', 'promise resolved with "hello"');
@@ -31,24 +32,25 @@ QUnit.asyncTest('test successful promise', 1, function (assert) {
 });
 
 // qunit-promises assertion
-QUnit.asyncTest('promise will resolve', 1, function (assert) {
+QUnit.test('promise will resolve', 1, function (assert) {
   assert.will(delayedHello());
 });
 
-QUnit.asyncTest('promise will resolve with message', 1, function (assert) {
+QUnit.test('promise will resolve with message', 1, function (assert) {
   assert.will(delayedHello(), 'the promise is ok');
 });
 
-QUnit.asyncTest('promise will resolve with value', 1, function (assert) {
+QUnit.test('promise will resolve with value', 1, function (assert) {
   assert.willEqual(delayedHello(), 'hello', 'returns "hello"');
 });
 
-QUnit.asyncTest('compare value using deep equality', 1, function (assert) {
+QUnit.test('compare value using deep equality', 1, function (assert) {
   assert.willEqual(delayedOne(), 1, 'returns 1');
 });
 
 // regular code to test failed promise
-QUnit.asyncTest('test failed promise', 1, function (assert) {
+QUnit.test('test failed promise', 1, function (assert) {
+  QUnit.stop();
   var promise = delayedHelloFail();
   promise.then(function () {
     assert.ok(false, 'promise failed to fail!');
@@ -57,23 +59,43 @@ QUnit.asyncTest('test failed promise', 1, function (assert) {
   }).always(QUnit.start);
 });
 
-QUnit.asyncTest('promise will reject', 1, function (assert) {
+QUnit.test('promise will reject', 1, function (assert) {
   assert.wont(delayedHelloFail(), 'promise fails');
 });
 
-QUnit.asyncTest('promise will reject with value', 1, function (assert) {
+QUnit.test('promise will reject with value', 1, function (assert) {
   assert.wontEqual(delayedHelloFail(), 'bye');
 });
 
-QUnit.asyncTest('promise will reject with value + message', 1, function (assert) {
+QUnit.test('promise will reject with value + message', 1, function (assert) {
   assert.wontEqual(delayedHelloFail(), 'bye', 'this is a failed promise');
 });
 
-QUnit.asyncTest('using deep equality', 1, function (assert) {
+QUnit.test('using deep equality', 1, function (assert) {
   assert.wontEqual(delayedOneFail(), 1, 'returns 1');
 });
 
 // advanced
-QUnit.asyncTest('two resolved promises in sequence', 1, function (assert) {
+QUnit.test('two resolved promises in sequence', 1, function (assert) {
   assert.willEqual(delayedHello().then(delayedHello), 'hello', 'promises chained');
+});
+
+QUnit.test('null promise throws an error', function (assert) {
+  assert.throws(function () {
+    assert.will(null, 'this should not resolve');
+  }, 'null promise causes an error');
+});
+
+QUnit.test('invalid promise throws an error', function (assert) {
+  assert.throws(function () {
+    assert.will({}, 'this does not have .then');
+  }, 'invalid promise object causes an error');
+});
+
+QUnit.test('promise without .always throws an error', function (assert) {
+  assert.throws(function () {
+    assert.will({
+      then: function () {}
+    }, 'this does not have .always');
+  }, 'invalid promise object causes an error');
 });
