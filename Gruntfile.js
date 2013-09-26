@@ -1,5 +1,7 @@
 /*global module:false*/
 module.exports = function (grunt) {
+  // time tasks
+  module.require('time-grunt')(grunt);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),

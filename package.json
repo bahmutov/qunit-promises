@@ -10,7 +10,8 @@
     "grunt-contrib-qunit": "~0.2.2",
     "grunt-deps-ok": "~0.1.2",
     "grunt-node-qunit": "~2.0.2",
-    "q": "~0.9.7"
+    "q": "~0.9.7",
+    "time-grunt": "~0.1.1"
   },
   "devDependencies": {},
   "scripts": {
