@@ -1,7 +1,7 @@
 # qunit-promises
 
-QUnit plugin that adds assertions to check promises, availabe
-as **qunit-promises** on [bower](http://sindresorhus.com/bower-components/).
+QUnit plugin that adds assertions to check promises.
+
 [Test page](http://glebbahmutov.com/qunit-promises/)
 
 [![NPM][qunit-promises-icon]][qunit-promises-url]
@@ -9,6 +9,12 @@ as **qunit-promises** on [bower](http://sindresorhus.com/bower-components/).
 [![dependencies][dependencies-image]][dependencies-url]
 
 [![endorse][endorse-image]][endorse-url]
+
+Available through [bower](http://sindresorhus.com/bower-components/) and
+[npm](https://npmjs.org/package/qunit-promises) as **qunit-promises**.
+Included in the list of [QUnit plugins](http://qunitjs.com/plugins/).
+
+Compatible with jQuery's and Q's promises.
 
 ## Problem
 
@@ -31,7 +37,7 @@ QUnit.test("test successful promise", 1, function (assert) {
 ```
 ## Promises plugin
 
-**qunit-promises** plugin adds a pair of methods to QUnit's 
+**qunit-promises** plugin adds a pair of methods to QUnit's
 **assert** object. It does these things for you:
 
 * **stops** current test queue
@@ -103,7 +109,10 @@ assert.wontDeepEqual(fn, expected, [message])
 
 ## Install
 
-Include _qunit-promises.js_ after _qunit.js_, new methods are
+### Browser
+
+* `bower install qunit-promises`
+* Include _qunit-promises.js_ after _qunit.js_, new methods are
 added to the **assert** object.
 
 ```html
@@ -113,10 +122,21 @@ added to the **assert** object.
 ```
 For full example, see the [test page](http://glebbahmutov.com/qunit-promises/).
 
+### Node
+
+The **qunit-promises** is compatible with [node-qunit](https://github.com/kof/node-qunit) and its wrapper [grunt-node-qunit](https://npmjs.org/package/grunt-node-qunit).
+
+* npm install qunit-promises --save
+* preload _qunit-promises.js_ as a dependency
+
+```sh
+qunit -c test/node-tests.js -t test/node-tests.js -d qunit-promises.js
+```
+
 ## Advanced
 
-*qunit-promises* simplify the tests when there is single promise to be evaluated.
-In other cases, you need to combine promises (chain, or evaluate in parallel)
+*qunit-promises* simplify the tests when there is a single promise to be evaluated.
+In other cases, you might to combine promises (chain, or evaluate in parallel)
 yourself before calling *assert.will...* as the last step.
 
 ```javascript
