@@ -14,6 +14,8 @@ Available through [bower](http://sindresorhus.com/bower-components/) and
 [npm](https://npmjs.org/package/qunit-promises) as **qunit-promises**.
 Included in the list of [QUnit plugins](http://qunitjs.com/plugins/).
 
+Compatible with jQuery's and Q's promises.
+
 ## Problem
 
 Compared with other testing frameworks designed to deal with async code
@@ -133,8 +135,8 @@ qunit -c test/node-tests.js -t test/node-tests.js -d qunit-promises.js
 
 ## Advanced
 
-*qunit-promises* simplify the tests when there is single promise to be evaluated.
-In other cases, you need to combine promises (chain, or evaluate in parallel)
+*qunit-promises* simplify the tests when there is a single promise to be evaluated.
+In other cases, you might to combine promises (chain, or evaluate in parallel)
 yourself before calling *assert.will...* as the last step.
 
 ```javascript
