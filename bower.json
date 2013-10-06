@@ -1,7 +1,7 @@
 {
   "name": "qunit-promises",
   "main": "qunit-promises.js",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "authors": [
     "Gleb Bahmutov <gleb.bahmutov@gmail.com>"
   ],
@@ -13,7 +13,7 @@
     "assert"
   ],
   "license": "MIT",
-  "homepage": "http://glebbahmutov.com/qunit-promises",
+  "homepage": "https://github.com/bahmutov/qunit-promise",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -22,5 +22,6 @@
     "tests",
     "Gruntfile.js",
     "package.json"
-  ]
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>"
 }

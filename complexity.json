@@ -5,7 +5,7 @@
       "errorsOnly": false,
       "cyclomatic": 4,
       "halstead": 12,
-      "maintainability": 100
+      "maintainability": 80
     }
   }
 }
