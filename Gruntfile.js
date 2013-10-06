@@ -4,7 +4,6 @@ module.exports = function (grunt) {
   module.require('time-grunt')(grunt);
 
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
 
     jshint: grunt.file.readJSON('jshint.json'),
 
