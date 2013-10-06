@@ -13,10 +13,13 @@
     "q": "~0.9.7",
     "time-grunt": "~0.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "pre-git": "0.0.11"
+  },
   "scripts": {
     "test": "grunt"
   },
+  "pre-commit": "grunt",
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/qunit-promises.git"
