@@ -21,7 +21,9 @@
     "test",
     "tests",
     "Gruntfile.js",
-    "package.json"
+    "package.json",
+    "complexity.json",
+    "jshint.json"
   ],
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>"
 }
