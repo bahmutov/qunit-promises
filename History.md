@@ -1,4 +1,11 @@
 
+0.0.11 / 2013-10-06
+==================
+
+  * ignoring build json files
+  * syncing properties from package.json to bower.json automatically
+  * added pre-push command
+
 0.0.10 / 2013-10-06
 ==================
 
