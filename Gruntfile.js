@@ -5,17 +5,11 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    //datetime: Date.now(),
-    
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc',
-      },
-      'default': {
-        src: [ '*.js' ]
-      }
-    },
-    
+
+    jshint: grunt.file.readJSON('jshint.json'),
+
+    complexity: grunt.file.readJSON('complexity.json'),
+
     qunit: {
       all: ['index.html']
     },
@@ -29,11 +23,8 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-bump');
-  grunt.loadNpmTasks('grunt-deps-ok');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-node-qunit');
+  var plugins = module.require('matchdep').filterDev('grunt-*');
+  plugins.forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('default', ['deps-ok', 'jshint', 'node-qunit', 'qunit']);
+  grunt.registerTask('default', ['deps-ok', 'jshint', 'node-qunit', 'qunit', 'complexity']);
 };

@@ -1,4 +1,5 @@
-var Q = require('q');
+/*global module:false*/
+var Q = module.require('q');
 
 QUnit.module('a test module');
 
@@ -7,6 +8,7 @@ QUnit.test('first test', function (assert) {
 });
 
 QUnit.test('second test', 1, function (assert) {
+  /* jshint -W109 */
 	assert.equal(1, "1", '1 == "1"');
 });
 
