@@ -151,3 +151,7 @@ function initCounter() {
 QUnit.test('manual async init', function (assert) {
   assert.willEqual(initCounter().then(obj.getCounter.bind(obj)), 1);
 });
+
+QUnit.test('returning value', function (assert) {
+  assert.willEqual(initCounter().then(function () { return obj.counter; }), 2);
+});
