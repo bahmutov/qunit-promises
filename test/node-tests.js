@@ -142,9 +142,11 @@ function initCounter() {
   return defer.promise;
 }
 
+function getCounter() {
+  return counter;
+}
+
 QUnit.test('manual async init', function (assert) {
   /*jshint -W064*/
-  assert.willEqual(initCounter().then(function () {
-    return counter;
-  }), 1);
+  assert.willEqual(initCounter().then(getCounter), 1);
 });
