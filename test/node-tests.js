@@ -128,3 +128,23 @@ QUnit.test('promise without .always throws an error', function (assert) {
     }, 'this does not have .always');
   }, 'invalid promise object causes an error');
 });
+
+/* testing async module setup work around */
+QUnit.module('async setup');
+
+var counter = 0;
+function initCounter() {
+  var defer = Q.defer();
+  setTimeout(function () {
+    counter += 1;
+    defer.resolve();
+  }, 1000);
+  return defer.promise;
+}
+
+QUnit.test('manual async init', function (assert) {
+  /*jshint -W064*/
+  assert.willEqual(initCounter().then(function () {
+    return counter;
+  }), 1);
+});
