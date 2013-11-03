@@ -3,7 +3,10 @@
   "version": "0.0.11",
   "description": "QUnit plugin that adds assertions to check promises quickly",
   "main": "qunit-promises.js",
-  "dependencies": {},
+  "dependencies": {
+    "allong.es": "~0.14.0",
+    "lodash": "~2.2.1"
+  },
   "devDependencies": {
     "pre-git": "0.0.11",
     "grunt-complexity": "~0.1.3",

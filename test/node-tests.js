@@ -1,3 +1,6 @@
+// run from command line
+// qunit -c ../qunit-promises.js -t node-tests.js
+
 /*global module:false*/
 var Q = module.require('q');
 
@@ -154,4 +157,40 @@ QUnit.test('manual async init', function (assert) {
 
 QUnit.test('returning value', function (assert) {
   assert.willEqual(initCounter().then(function () { return obj.counter; }), 2);
+});
+
+// var allong = require('allong.es');
+// var once = allong.es.once;
+var once = module.require('lodash').once;
+
+QUnit.module('once upon a promise in setup', {
+  setup: once(function () {
+    console.log('initialize once');
+    QUnit.stop();
+    initCounter().finally(QUnit.start);
+  })
+});
+
+QUnit.test('first test after setup', function (assert) {
+  assert.equal(obj.counter, 3, 'initialized counter');
+});
+
+QUnit.test('second test after setup', function (assert) {
+  assert.equal(obj.counter, 3, 'initialized counter');
+});
+
+QUnit.test('promise once resolved', function (assert) {
+  QUnit.stop();
+  var initCounterOnce = once(initCounter);
+  var p1 = initCounterOnce();
+  assert.ok(!p1.isFulfilled(), 'promise unfulfilled');
+  p1.then(function () {
+    QUnit.ok(p1.isFulfilled(), 'now promise has been fulfilled');
+
+    var p2 = initCounterOnce();
+    QUnit.deepEqual(p1, p2, 'once returns same promise');
+    QUnit.ok(p2.isFulfilled(), 'promise has been fulfilled already');
+
+    p2.then(QUnit.start);
+  });
 });
