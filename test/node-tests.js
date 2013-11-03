@@ -132,21 +132,22 @@ QUnit.test('promise without .always throws an error', function (assert) {
 /* testing async module setup work around */
 QUnit.module('async setup');
 
-var counter = 0;
+var obj = {
+  counter: 0,
+  getCounter: function () {
+    return this.counter;
+  }
+};
+
 function initCounter() {
   var defer = Q.defer();
   setTimeout(function () {
-    counter += 1;
+    obj.counter += 1;
     defer.resolve();
   }, 1000);
   return defer.promise;
 }
 
-function getCounter() {
-  return counter;
-}
-
 QUnit.test('manual async init', function (assert) {
-  /*jshint -W064*/
-  assert.willEqual(initCounter().then(getCounter), 1);
+  assert.willEqual(initCounter().then(obj.getCounter.bind(obj)), 1);
 });
