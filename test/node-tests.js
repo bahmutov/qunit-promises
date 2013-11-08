@@ -12,7 +12,7 @@ QUnit.test('first test', function (assert) {
 
 QUnit.test('second test', 1, function (assert) {
   /* jshint -W109 */
-	assert.equal(1, "1", '1 == "1"');
+	assert.equal(1, +"1", '1 == "1"');
 });
 
 QUnit.test('qunit-promises is present', 1, function (assert) {
