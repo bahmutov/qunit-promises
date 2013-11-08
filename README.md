@@ -5,8 +5,10 @@ QUnit plugin that adds assertions to check promises.
 [Test page](http://glebbahmutov.com/qunit-promises/)
 
 [![NPM][qunit-promises-icon]][qunit-promises-url]
+
 [![Build status][ci-image]][ci-url]
 [![dependencies][dependencies-image]][dependencies-url]
+[![dev dependencies][dev-dependencies-image]][dev-dependencies-url]
 
 [![endorse][endorse-image]][endorse-url]
 
@@ -126,11 +128,18 @@ For full example, see the [test page](http://glebbahmutov.com/qunit-promises/).
 
 The **qunit-promises** is compatible with [node-qunit](https://github.com/kof/node-qunit) and its wrapper [grunt-node-qunit](https://npmjs.org/package/grunt-node-qunit).
 
+Also compatible with [gt](https://github.com/bahmutov/gt), which provides
+code coverage.
+
 * npm install qunit-promises --save
 * preload _qunit-promises.js_ as a dependency
 
 ```sh
+// via node-qunit
 qunit -c test/node-tests.js -t test/node-tests.js -d qunit-promises.js
+
+// via gt
+gt qunit-promises.js test/node-tests.js
 ```
 
 ## Advanced
@@ -155,5 +164,7 @@ License: MIT - do anything with the code, but don't blame me if it does not work
 [ci-url]: https://travis-ci.org/bahmutov/qunit-promises
 [dependencies-image]: https://david-dm.org/bahmutov/qunit-promises.png
 [dependencies-url]: https://david-dm.org/bahmutov/qunit-promises
+[dev-dependencies-image]: https://david-dm.org/bahmutov/qunit-promises/dev-status.png
+[dev-dependencies-url]: https://david-dm.org/bahmutov/qunit-promises#info=devDependencies
 [endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
 [endorse-url]: https://coderwall.com/bahmutov
