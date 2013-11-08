@@ -23,8 +23,8 @@ module.exports = function (grunt) {
     'node-qunit': {
       all: {
         deps: './qunit-promises.js',
-        code: './test/node-tests.js',
-        tests: './test/node-tests.js'
+        code: './qunit-promises.js',
+        tests: ['./test/node-tests.js', './test/node-once-tests.js']
       }
     }
   });
