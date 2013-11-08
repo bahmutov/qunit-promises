@@ -1,4 +1,10 @@
 
+0.0.13 / 2013-11-07
+==================
+
+  * compatible with [gt](https://github.com/bahmutov/gt), fixes #4
+  * moved setup once unit tests to separate file
+
 0.0.11 / 2013-10-06
 ==================
 
