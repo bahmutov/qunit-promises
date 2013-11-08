@@ -19,10 +19,12 @@
     "grunt-node-qunit": "~2.0.2",
     "q": "~0.9.7",
     "time-grunt": "~0.2.0",
-    "grunt-npm2bower-sync": "0.0.2"
+    "grunt-npm2bower-sync": "0.0.2",
+    "gt": "~0.8.17"
   },
   "scripts": {
-    "test": "grunt"
+    "test": "grunt",
+    "gt": "node ./node_modules/gt qunit-promises.js test/node-tests.js --output"
   },
   "pre-commit": "grunt",
   "pre-push": "grunt qunit",
