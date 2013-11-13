@@ -1,11 +1,11 @@
 {
   "name": "qunit-promises",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "QUnit plugin that adds assertions to check promises quickly",
   "main": "qunit-promises.js",
   "dependencies": {
     "allong.es": "~0.14.0",
-    "lodash": "~2.2.1"
+    "lodash": "~2.3.0"
   },
   "devDependencies": {
     "pre-git": "0.0.13",
@@ -18,9 +18,9 @@
     "grunt-deps-ok": "~0.1.7",
     "grunt-node-qunit": "~2.0.2",
     "q": "~0.9.7",
-    "time-grunt": "~0.2.0",
+    "time-grunt": "~0.2.1",
     "grunt-npm2bower-sync": "0.0.2",
-    "gt": "~0.8.18"
+    "gt": "~0.8.20"
   },
   "scripts": {
     "test": "grunt",
