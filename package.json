@@ -17,10 +17,10 @@
     "grunt-contrib-qunit": "~0.3.0",
     "grunt-deps-ok": "~0.1.7",
     "grunt-node-qunit": "~2.0.2",
-    "q": "~0.9.7",
-    "time-grunt": "~0.2.5",
+    "q": "~1.0.0",
+    "time-grunt": "~0.2.7",
     "grunt-npm2bower-sync": "~0.3.0",
-    "gt": "~0.8.21"
+    "gt": "~0.8.22"
   },
   "scripts": {
     "test": "grunt",
