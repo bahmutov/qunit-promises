@@ -45,6 +45,6 @@
   "scripts": {
     "test": "grunt && npm run gt && npm run coveralls",
     "gt": "node ./node_modules/gt qunit-promises.js test/node-tests.js --output",
-    "coveralls": "cat cover/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "cat cover/lcov.info | ./node_modules/coveralls/bin/coveralls.js &"
   }
 }
