@@ -7,6 +7,7 @@ QUnit plugin that adds assertions to check promises.
 [![NPM][qunit-promises-icon]][qunit-promises-url]
 
 [![Build status][ci-image]][ci-url]
+[![Coverage Status][qunit-promises-coverage-image]][qunit-promises-coverage-url]
 [![dependencies][dependencies-image]][dependencies-url]
 [![dev dependencies][dev-dependencies-image]][dev-dependencies-url]
 
@@ -162,6 +163,8 @@ License: MIT - do anything with the code, but don't blame me if it does not work
 [qunit-promises-url]: https://npmjs.org/package/qunit-promises
 [ci-image]: https://travis-ci.org/bahmutov/qunit-promises.png?branch=master
 [ci-url]: https://travis-ci.org/bahmutov/qunit-promises
+[qunit-promises-coverage-image]: https://coveralls.io/repos/bahmutov/qunit-promises/badge.png
+[qunit-promises-coverage-url]: https://coveralls.io/r/bahmutov/qunit-promises
 [dependencies-image]: https://david-dm.org/bahmutov/qunit-promises.png
 [dependencies-url]: https://david-dm.org/bahmutov/qunit-promises
 [dev-dependencies-image]: https://david-dm.org/bahmutov/qunit-promises/dev-status.png

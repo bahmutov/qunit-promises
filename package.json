@@ -20,11 +20,13 @@
     "q": "~1.0.0",
     "time-grunt": "~0.2.7",
     "grunt-npm2bower-sync": "~0.3.0",
-    "gt": "~0.8.22"
+    "gt": "~0.8.22",
+    "coveralls": "~2.8.0"
   },
   "scripts": {
-    "test": "grunt",
-    "gt": "node ./node_modules/gt qunit-promises.js test/node-tests.js --output"
+    "test": "grunt && npm run gt && npm run coveralls",
+    "gt": "node ./node_modules/gt qunit-promises.js test/node-tests.js --output",
+    "coveralls": "cat cover/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "pre-commit": "grunt && npm run gt",
   "pre-push": "grunt qunit",
