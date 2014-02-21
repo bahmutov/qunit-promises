@@ -22,6 +22,17 @@ function delayedOneFail() {
   return deferred.promise();
 }
 
+function delayedFooBar() {
+  var deferred = new $.Deferred();
+  var result = {
+    foo: {
+      bar: true
+    }
+  };
+  setTimeout(function () { deferred.resolve(result); }, 100);
+  return deferred.promise();
+}
+
 // regular custom code testing a successful promise
 QUnit.test('test successful promise', 1, function (assert) {
   QUnit.stop();
@@ -46,6 +57,15 @@ QUnit.test('promise will resolve with value', 1, function (assert) {
 
 QUnit.test('compare value using deep equality', 1, function (assert) {
   assert.willEqual(delayedOne(), 1, 'returns 1');
+});
+
+QUnit.test('promise will resolve with value using deepEqual', 1, function (assert) {
+  var expected = {
+    foo: {
+      bar: true
+    }
+  };
+  assert.willDeepEqual(delayedFooBar(), expected, 'returns equal object');
 });
 
 // regular code to test failed promise
