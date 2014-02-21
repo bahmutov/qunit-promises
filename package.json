@@ -1,7 +1,7 @@
 {
   "name": "qunit-promises",
   "description": "QUnit plugin that adds assertions to check promises quickly",
-  "version": "0.0.15",
+  "version": "0.1.0",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": {
     "url": "https://github.com/bahmutov/qunit-promises/issues"
@@ -16,16 +16,16 @@
     "grunt-bump": "0.0.13",
     "grunt-complexity": "~0.1.4",
     "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-qunit": "~0.3.0",
+    "grunt-contrib-qunit": "~0.4.0",
     "grunt-deps-ok": "~0.1.7",
     "grunt-nice-package": "~0.2.1",
     "grunt-node-qunit": "~2.0.2",
     "grunt-npm2bower-sync": "~0.3.0",
-    "gt": "~0.8.22",
+    "gt": "~0.8.33",
     "matchdep": "~0.3.0",
-    "pre-git": "0.0.14",
+    "pre-git": "0.0.15",
     "q": "~1.0.0",
-    "time-grunt": "~0.2.7"
+    "time-grunt": "~0.2.9"
   },
   "homepage": "https://github.com/bahmutov/qunit-promise",
   "keywords": [
