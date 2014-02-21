@@ -12,6 +12,12 @@ module.exports = function (grunt) {
       }
     },
 
+    'nice-package': {
+      all: {
+        options: {}
+      }
+    },
+
     jshint: grunt.file.readJSON('jshint.json'),
 
     complexity: grunt.file.readJSON('complexity.json'),
@@ -32,6 +38,6 @@ module.exports = function (grunt) {
   var plugins = module.require('matchdep').filterDev('grunt-*');
   plugins.forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('default', ['deps-ok', 'sync',
+  grunt.registerTask('default', ['deps-ok', 'nice-package', 'sync',
     'jshint', 'node-qunit', 'qunit', 'complexity']);
 };
