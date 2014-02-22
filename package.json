@@ -18,7 +18,7 @@
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-qunit": "~0.4.0",
     "grunt-deps-ok": "~0.1.7",
-    "grunt-nice-package": "~0.2.1",
+    "grunt-nice-package": "~0.2.2",
     "grunt-node-qunit": "~2.0.2",
     "grunt-npm2bower-sync": "~0.3.0",
     "gt": "~0.8.33",
