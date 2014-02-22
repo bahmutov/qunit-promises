@@ -27,7 +27,10 @@ function delayedFoo() {
 
 QUnit.test('example promise test', function (assert) {
 	assert.will(delayedFoo(), 'promise is resolved');
-	assert.willEqual(delayedFoo(), 'foo', 'promise is resolved with correct value');
+});
+
+QUnit.test('example promise test with value', function (assert) {
+  assert.willEqual(delayedFoo(), 'foo', 'promise is resolved with correct value');
 });
 
 function delayedHello() {
@@ -54,6 +57,7 @@ function delayedOneFail() {
   return deferred.promise;
 }
 
+/*
 function delayedFooBar() {
   var deferred = Q.defer();
   var result = {
@@ -64,6 +68,7 @@ function delayedFooBar() {
   setTimeout(function () { deferred.resolve(result); }, 100);
   return deferred.promise;
 }
+*/
 
 // regular custom code testing a successful promise
 QUnit.test('test successful promise', 1, function (assert) {
@@ -87,8 +92,13 @@ QUnit.test('promise will resolve with value', 1, function (assert) {
   assert.willEqual(delayedHello(), 'hello', 'returns "hello"');
 });
 
-QUnit.test('compare value using deep equality', 1, function (assert) {
+QUnit.test('compare value using equality', 1, function (assert) {
   assert.willEqual(delayedOne(), 1, 'returns 1');
+});
+
+/*
+QUnit.test('QUnit.equiv', function (assert) {
+  assert.equal(typeof QUnit.equiv, 'function', 'QUnit.equiv is a function');
 });
 
 QUnit.test('promise will resolve with value using deepEqual', function (assert) {
@@ -99,6 +109,7 @@ QUnit.test('promise will resolve with value using deepEqual', function (assert) 
   };
   assert.willDeepEqual(delayedFooBar(), expected, 'returns equal object');
 });
+*/
 
 // regular code to test failed promise
 QUnit.test('test failed promise', 1, function (assert) {
