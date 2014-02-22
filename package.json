@@ -22,6 +22,7 @@
     "grunt-node-qunit": "~2.0.2",
     "grunt-npm2bower-sync": "~0.3.0",
     "gt": "~0.8.33",
+    "jshint-stylish": "~0.1.5",
     "matchdep": "~0.3.0",
     "pre-git": "0.0.15",
     "q": "~1.0.0",

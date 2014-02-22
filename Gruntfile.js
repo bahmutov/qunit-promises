@@ -1,4 +1,4 @@
-/*global module:false*/
+/* global module, require */
 module.exports = function (grunt) {
   module.require('time-grunt')(grunt);
 
@@ -20,7 +20,15 @@ module.exports = function (grunt) {
       }
     },
 
-    jshint: grunt.file.readJSON('jshint.json'),
+    jshint: {
+      'options': {
+        jshintrc: '.jshintrc',
+        reporter: require('jshint-stylish')
+      },
+      default: {
+        'src': [ '*.js', 'test/*.js' ]
+      }
+    },
 
     complexity: grunt.file.readJSON('complexity.json'),
 
