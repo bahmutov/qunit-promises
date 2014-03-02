@@ -1,7 +1,7 @@
 {
   "name": "qunit-promises",
   "description": "QUnit plugin that adds assertions to check promises quickly",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": {
     "url": "https://github.com/bahmutov/qunit-promises/issues"
@@ -23,6 +23,7 @@
     "grunt-npm2bower-sync": "~0.3.0",
     "gt": "~0.8.34",
     "jshint-stylish": "~0.1.5",
+    "lcov-filter": "0.0.0",
     "matchdep": "~0.3.0",
     "pre-git": "0.0.15",
     "q": "~1.0.0",
@@ -46,6 +47,6 @@
   "scripts": {
     "test": "grunt && npm run gt",
     "gt": "node ./node_modules/gt qunit-promises.js test/node-tests.js --output",
-    "coveralls": "cat cover/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "node node_modules/lcov-filter/index.js cover/lcov.info test | ./node_modules/coveralls/bin/coveralls.js"
   }
 }
