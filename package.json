@@ -1,7 +1,7 @@
 {
   "name": "qunit-promises",
   "description": "QUnit plugin that adds assertions to check promises quickly",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": {
     "url": "https://github.com/bahmutov/qunit-promises/issues"
@@ -29,7 +29,7 @@
     "q": "~1.0.0",
     "time-grunt": "~0.2.9"
   },
-  "homepage": "https://github.com/bahmutov/qunit-promise",
+  "homepage": "https://github.com/bahmutov/qunit-promises",
   "keywords": [
     "test",
     "qunit",
