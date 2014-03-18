@@ -9,7 +9,7 @@
       throw new Error('promise object does not have .then function');
     }
     if (typeof promise.always !== 'function' &&
-      typeof promise.finally !== 'function') {
+      typeof promise['finally'] !== 'function') {
       throw new Error('promise object does not have .always or .finally');
     }
     return alwaysName(promise);
@@ -18,7 +18,7 @@
   function alwaysName(promise) {
     if (typeof promise.always === 'function') {
       return 'always';
-    } else if (typeof promise.finally === 'function') {
+    } else if (typeof promise['finally'] === 'function') {
       return 'finally';
     } else {
       throw new Error('promise object does not have "always" method');
