@@ -1,4 +1,11 @@
 
+0.1.3 / 2014-03-18
+==================
+
+ * Merge pull request #8 from jrsinclair/ie8-compatibility
+ * Fixing issue with 'finally' reserved word in IE8
+ * updated dependencies
+
 0.0.13 / 2013-11-07
 ==================
 
