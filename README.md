@@ -31,11 +31,11 @@ that checks that a promise resolves successfully with a certain value:
 // function delayedHello returns a promise
 
 QUnit.test("test successful promise", 1, function (assert) {
-	QUnit.stop();
+    QUnit.stop();
     var promise = delayedHello();
     promise.then(function (actual) {
         assert.equal(actual, 'hello', 'promise resolved with "hello"');
-    }).always(start);
+    }).always(QUnit.start);
 });
 ```
 ## Promises plugin
