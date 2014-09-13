@@ -9,6 +9,7 @@ QUnit plugin that adds assertions to check promises.
 [![Build status][ci-image]][ci-url]
 [![Coverage Status][qunit-promises-coverage-image]][qunit-promises-coverage-url]
 [![Code Climate][qunit-promises-code-climage-image]][qunit-promises-code-climage-url]
+[![Codacy][qunit-promises-codacy-image]][qunit-promises-codacy-url]
 [![dependencies][dependencies-image]][dependencies-url]
 [![dev dependencies][dev-dependencies-image]][dev-dependencies-url]
 
@@ -168,6 +169,8 @@ License: MIT - do anything with the code, but don't blame me if it does not work
 [qunit-promises-coverage-url]: https://coveralls.io/r/bahmutov/qunit-promises
 [qunit-promises-code-climage-image]: https://codeclimate.com/github/bahmutov/qunit-promises/badges/gpa.svg
 [qunit-promises-code-climage-url]: https://codeclimate.com/github/bahmutov/qunit-promises
+[qunit-promises-codacy-image]: https://www.codacy.com/project/badge/b9027bffd24b4fb081eeb295fe7ce007
+[qunit-promises-codacy-url]: https://www.codacy.com/public/bahmutov/qunit-promises.git
 [dependencies-image]: https://david-dm.org/bahmutov/qunit-promises.png
 [dependencies-url]: https://david-dm.org/bahmutov/qunit-promises
 [dev-dependencies-image]: https://david-dm.org/bahmutov/qunit-promises/dev-status.png
