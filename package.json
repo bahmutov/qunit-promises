@@ -44,9 +44,13 @@
   "main": "qunit-promises.js",
   "pre-commit": [
     "grunt",
-    "npm run gt"
+    "npm run gt",
+    "npm version"
   ],
-  "pre-push": "grunt qunit",
+  "pre-push": [
+    "grunt qunit",
+    "npm version"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/qunit-promises.git"
