@@ -10,6 +10,17 @@ function delayedHelloFail() {
   return deferred.promise();
 }
 
+function delayedNestedFail() {
+  var deferred = new $.Deferred();
+  var result = {
+    foo: {
+      bar: 'baz'
+    }
+  };
+  setTimeout(function () { deferred.reject(result); }, 100);
+  return deferred.promise();
+}
+
 function delayedOne() {
   var deferred = new $.Deferred();
   setTimeout(function () { deferred.resolve(1); }, 100);
@@ -85,6 +96,19 @@ QUnit.test('promise will reject', 1, function (assert) {
 
 QUnit.test('promise will reject with value', 1, function (assert) {
   assert.wontEqual(delayedHelloFail(), 'bye');
+});
+
+QUnit.test('promise will reject with deep value', 1, function (assert) {
+  assert.wontDeepEqual(delayedHelloFail(), 'bye');
+});
+
+QUnit.test('deep equal for rejected promise', 1, function (assert) {
+  var expected = {
+    foo: {
+      bar: 'baz'
+    }
+  };
+  assert.wontDeepEqual(delayedNestedFail(), expected);
 });
 
 QUnit.test('promise will reject with value + message', 1, function (assert) {

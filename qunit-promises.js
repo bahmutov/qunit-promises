@@ -84,6 +84,17 @@
       }, function (actual) {
         QUnit.push(actual == expected, actual, expected, message);
       })[always](QUnit.start).done();
+    },
+
+    wontDeepEqual: function (promise, expected, message) {
+      var always = verifyPromise(promise);
+
+      QUnit.stop();
+      promise.then(function (actual) {
+        QUnit.push(false, actual, expected, 'promise resolved (but should have been rejected)');
+      }, function (actual) {
+        QUnit.push(QUnit.equiv(actual, expected), actual, expected, message);
+      })[always](QUnit.start).done();
     }
   });
 }(QUnit));
