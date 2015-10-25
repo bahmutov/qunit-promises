@@ -22,5 +22,7 @@
     "complexity.json",
     "jshint.json"
   ],
-  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>"
+  "authors": [
+    "Gleb Bahmutov <gleb.bahmutov@gmail.com>"
+  ]
 }

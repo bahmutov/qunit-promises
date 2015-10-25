@@ -9,48 +9,51 @@
   "contributors": [],
   "dependencies": {
     "allong.es": "0.14.0",
-    "lodash": "2.4.1"
+    "lodash": "3.10.1"
   },
   "devDependencies": {
-    "coveralls": "2.11.2",
+    "coveralls": "2.11.4",
     "grunt": "0.4.5",
-    "grunt-bump": "0.0.16",
-    "grunt-complexity": "0.2.0",
-    "grunt-contrib-jshint": "0.10.0",
-    "grunt-contrib-qunit": "0.5.2",
-    "grunt-deps-ok": "0.5.2",
-    "grunt-nice-package": "0.9.2",
+    "grunt-bump": "0.6.0",
+    "grunt-complexity": "0.3.0",
+    "grunt-contrib-jshint": "0.11.3",
+    "grunt-contrib-qunit": "0.7.0",
+    "grunt-deps-ok": "0.8.0",
+    "grunt-nice-package": "0.9.4",
     "grunt-node-qunit": "2.0.2",
-    "grunt-npm2bower-sync": "0.4.0",
+    "grunt-npm2bower-sync": "0.9.1",
     "gt": "0.8.49",
-    "jshint-stylish": "0.4.0",
-    "lcov-filter": "0.0.1",
-    "matchdep": "0.3.0",
-    "pre-git": "0.1.1",
-    "q": "1.4.1",
-    "time-grunt": "1.0.0"
+    "jshint-stylish": "2.0.1",
+    "lcov-filter": "0.0.3",
+    "matchdep": "1.0.0",
+    "pre-git": "0.6.2",
+    "q": "2.0.3",
+    "time-grunt": "1.2.2"
   },
   "engines": {
     "node": ">= 0.8.0"
   },
   "homepage": "https://github.com/bahmutov/qunit-promises",
   "keywords": [
-    "test",
-    "qunit",
     "plugin",
-    "promises"
+    "promises",
+    "qunit",
+    "test"
   ],
   "license": "MIT",
   "main": "qunit-promises.js",
-  "pre-commit": "grunt && npm run gt",
+  "pre-commit": [
+    "grunt",
+    "npm run gt"
+  ],
   "pre-push": "grunt qunit",
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/qunit-promises.git"
   },
   "scripts": {
-    "test": "grunt && npm run gt",
+    "coveralls": "node node_modules/lcov-filter/index.js cover/lcov.info test | ./node_modules/coveralls/bin/coveralls.js",
     "gt": "gt qunit-promises.js test/node-tests.js --output",
-    "coveralls": "node node_modules/lcov-filter/index.js cover/lcov.info test | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "grunt && npm run gt"
   }
 }
