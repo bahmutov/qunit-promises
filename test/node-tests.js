@@ -2,8 +2,6 @@
 // qunit -c ../qunit-promises.js -t node-tests.js
 // gt qunit-promises.js test/node-tests.js
 /*global module:false*/
-var Q = module.require('q');
-
 QUnit.module('a test module');
 
 QUnit.test('first test', function (assert) {
@@ -20,9 +18,9 @@ QUnit.test('qunit-promises is present', 1, function (assert) {
 });
 
 function delayedFoo() {
-	var deferred = Q.defer();
-	setTimeout(function () { deferred.resolve('foo'); }, 100);
-	return deferred.promise;
+  return new Promise(function(resolve, reject) {
+	  setTimeout(function () { resolve('foo'); }, 100);
+	});
 }
 
 QUnit.test('example promise test', function (assert) {
@@ -34,47 +32,48 @@ QUnit.test('example promise test with value', function (assert) {
 });
 
 function delayedHello() {
-  var deferred = Q.defer();
-  setTimeout(function () { deferred.resolve('hello'); }, 100);
-  return deferred.promise;
+  return new Promise(function(resolve, reject){
+    setTimeout(function () { resolve('hello'); }, 100);
+  });
 }
 
 function delayedHelloFail() {
-  var deferred = Q.defer();
-  setTimeout(function () { deferred.reject('bye'); }, 100);
-  return deferred.promise;
+  return new Promise(function(resolve, reject){
+    setTimeout(function () { reject('bye'); }, 100);
+  });
 }
 
 function delayedOne() {
-  var deferred = Q.defer();
-  setTimeout(function () { deferred.resolve(1); }, 100);
-  return deferred.promise;
+  return new Promise(function(resolve, reject){
+    setTimeout(function () { resolve(1); }, 100);
+  });
 }
 
 function delayedOneFail() {
-  var deferred = Q.defer();
-  setTimeout(function () { deferred.reject(1); }, 100);
-  return deferred.promise;
+  return new Promise(function(resolve, reject){
+    setTimeout(function () { reject(1); }, 100);
+  });
 }
 
 function delayedFooBar() {
-  var deferred = Q.defer();
-  var result = {
-    foo: {
-      bar: true
-    }
-  };
-  setTimeout(function () { deferred.resolve(result); }, 100);
-  return deferred.promise;
+  return new Promise(function(resolve, reject){
+    var result = {
+      foo: {
+        bar: true
+      }
+    };
+    setTimeout(function () { resolve(result); }, 100);
+  });
 }
 
 // regular custom code testing a successful promise
 QUnit.test('test successful promise', 1, function (assert) {
-  QUnit.stop();
+  var done = assert.async();
   var promise = delayedHello();
   promise.then(function (actual) {
     assert.equal(actual, 'hello', 'promise resolved with "hello"');
-  }).finally(QUnit.start);
+    done();
+  });
 });
 
 // qunit-promises assertion
@@ -109,13 +108,15 @@ QUnit.test('promise will resolve with value using deepEqual', function (assert) 
 
 // regular code to test failed promise
 QUnit.test('test failed promise', 1, function (assert) {
-  QUnit.stop();
+  var done = assert.async();
   var promise = delayedHelloFail();
   promise.then(function () {
     assert.ok(false, 'promise failed to fail!');
+    done();
   }, function (actual) {
     assert.equal(actual, 'bye', 'promise failed');
-  }).finally(QUnit.start);
+    done();
+  });
 });
 
 QUnit.test('promise will reject', 1, function (assert) {
@@ -151,14 +152,6 @@ QUnit.test('invalid promise throws an error', function (assert) {
   }, 'invalid promise object causes an error');
 });
 
-QUnit.test('promise without .always throws an error', function (assert) {
-  assert.throws(function () {
-    assert.will({
-      then: function () {}
-    }, 'this does not have .always');
-  }, 'invalid promise object causes an error');
-});
-
 /* testing async module setup work around */
 QUnit.module('async setup');
 
@@ -170,12 +163,12 @@ var obj = {
 };
 
 function initCounter() {
-  var defer = Q.defer();
-  setTimeout(function () {
-    obj.counter += 1;
-    defer.resolve();
-  }, 1000);
-  return defer.promise;
+  return new Promise(function(resolve, reject) {
+    setTimeout(function () {
+      obj.counter += 1;
+      resolve();
+    }, 1000);
+  });
 }
 
 QUnit.test('manual async init', function (assert) {
