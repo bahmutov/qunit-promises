@@ -27,36 +27,43 @@
 
   QUnit.extend(QUnit.assert, {
     // resolved promises
-    will: function (promise, message) {
+    will: function (promise, expectation, message) {
       var always = verifyPromise(promise);
+      if (typeof expectation == 'string') {
+        message = expectation;
+        expectation = function() { return true };
+      }
 
       QUnit.stop();
-      promise.then(function () {
-        QUnit.push(true, undefined, undefined, message);
+      promise.then(function (actual) {
+        QUnit.push(expectation(actual), undefined, undefined, message);
       }, function () {
         QUnit.push(false, undefined, undefined, 'promise rejected (but should have been resolved)');
       })[always](QUnit.start).done();
     },
 
-    willEqual: function (promise, expected, message) {
+    willEqual: function (promise, expected, message, actualTransform) {
       var always = verifyPromise(promise);
-
+      actualTransform = actualTransform || function(actual) {return actual;};
       QUnit.stop();
       promise.then(function (actual) {
+        actual = actualTransform(actual);
         QUnit.push(actual == expected, actual, expected, message);
       }, function (actual) {
         QUnit.push(false, actual, expected, 'promise rejected (but should have been resolved)');
       })[always](QUnit.start).done();
     },
 
-    willDeepEqual: function (promise, expected, message) {
+    willDeepEqual: function (promise, expected, message, actualTransform) {
       var always = verifyPromise(promise);
+      actualTransform = actualTransform || function(actual) {return actual;};
 
       QUnit.stop();
       promise.then(function (actual) {
         if (typeof QUnit.equiv !== 'function') {
           throw new Error('Missing QUnit.equiv function');
         }
+        actual = actualTransform(actual);
         QUnit.push(QUnit.equiv(actual, expected), actual, expected, message);
       }, function (actual) {
         QUnit.push(false, actual, expected, 'promise rejected (but should have been resolved)');

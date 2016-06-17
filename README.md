@@ -65,26 +65,33 @@ QUnit.test("test successful promise", 1, function (assert) {
 ### Successful promises
 
 ```
+assert.will(fn, [expectation [, message]])
 assert.will(fn, [message])
 
 - fn: function that returns a promise that should be resolved
+- expectation: function that will evaluate received result and 
+  return true / false if it's correct or wrong
 - message (optional): to push in the log
 ```
 
 ```
-assert.willEqual(fn, expected, [message])
+assert.willEqual(fn, expected, [message], [actualTransform])
 
 - fn: function that returns a promise that should be resolved
 - expected: to compare with the resolved value using ==
 - message (optional): to push in the log
+- actualTransform (optional): function that will transform promise's
+  result for comparison with "expected", e.g. extract a member from object
 ```
 
 ```
-assert.willDeepEqual(fn, expected, [message])
+assert.willDeepEqual(fn, expected, [message], [actualTransform])
 
 - fn: function that returns a promise that should be resolved
 - expected value: to compare with the resolved value using QUnit.equiv
 - message (optional): to push in the log
+- actualTransform (optional): function that will transform promise's
+  result for comparison with "expected", e.g. extract a member from object
 ```
 
 ### Rejected promises
