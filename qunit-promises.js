@@ -31,7 +31,7 @@
       var always = verifyPromise(promise);
       if (typeof expectation == 'string') {
         message = expectation;
-        expectation = function() { return true };
+        expectation = function() { return true; };
       }
 
       QUnit.stop();
