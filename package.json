@@ -27,9 +27,9 @@
     "jshint-stylish": "2.0.1",
     "lcov-filter": "0.0.3",
     "matchdep": "1.0.0",
-    "pre-git": "0.6.2",
+    "pre-git": "3.9.1",
     "q": "2.0.3",
-    "qunit": "^0.9.1",
+    "qunit": "0.9.1",
     "time-grunt": "1.2.2"
   },
   "engines": {
@@ -44,15 +44,6 @@
   ],
   "license": "MIT",
   "main": "qunit-promises.js",
-  "pre-commit": [
-    "grunt",
-    "npm run gt",
-    "npm version"
-  ],
-  "pre-push": [
-    "grunt qunit",
-    "npm version"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/qunit-promises.git"
@@ -61,6 +52,24 @@
     "coveralls": "node node_modules/lcov-filter/index.js cover/lcov.info test | ./node_modules/coveralls/bin/coveralls.js",
     "gt": "gt qunit-promises.js test/node-tests.js --output",
     "test": "grunt && npm run gt",
-    "test-qunit": "qunit -d ./qunit-promises.js -c test/tests.js -t test/tests.js"
+    "test-qunit": "qunit -d ./qunit-promises.js -c test/tests.js -t test/tests.js",
+    "commit": "commit-wizard"
+  },
+  "config": {
+    "pre-git": {
+      "commit-msg": "simple",
+      "pre-commit": [
+        "npm run test",
+        "npm run gt",
+        "npm version"
+      ],
+      "pre-push": [
+        "grunt qunit",
+        "npm version"
+      ],
+      "post-commit": [],
+      "post-checkout": [],
+      "post-merge": []
+    }
   }
 }

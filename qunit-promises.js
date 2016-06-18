@@ -25,13 +25,20 @@
     }
   }
 
+  function T() {
+    return true;
+  }
+
   QUnit.extend(QUnit.assert, {
     // resolved promises
     will: function (promise, expectation, message) {
       var always = verifyPromise(promise);
       if (typeof expectation == 'string') {
         message = expectation;
-        expectation = function() { return true; };
+        expectation = T;
+      }
+      if (arguments.length === 1) {
+        expectation = T;
       }
 
       QUnit.stop();
