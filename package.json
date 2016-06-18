@@ -14,7 +14,7 @@
         "npm run gt"
       ],
       "pre-push": [
-        "npm run grunt qunit",
+        "npm run test",
         "npm run size"
       ],
       "post-commit": [],
