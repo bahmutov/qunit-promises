@@ -6,61 +6,6 @@
   "bugs": {
     "url": "https://github.com/bahmutov/qunit-promises/issues"
   },
-  "contributors": [],
-  "dependencies": {
-    "allong.es": "0.14.0",
-    "lodash": "3.10.1"
-  },
-  "devDependencies": {
-    "coveralls": "2.11.4",
-    "grunt": "0.4.5",
-    "grunt-bump": "0.6.0",
-    "grunt-cli": "1.2.0",
-    "grunt-complexity": "0.3.0",
-    "grunt-contrib-jshint": "0.11.3",
-    "grunt-contrib-qunit": "0.7.0",
-    "grunt-deps-ok": "0.8.0",
-    "grunt-nice-package": "0.9.4",
-    "grunt-node-qunit": "2.0.2",
-    "grunt-npm2bower-sync": "0.9.1",
-    "gt": "0.8.49",
-    "jshint-stylish": "2.0.1",
-    "lcov-filter": "0.0.3",
-    "matchdep": "1.0.0",
-    "pre-git": "3.9.1",
-    "q": "2.0.3",
-    "qunit": "0.9.1",
-    "time-grunt": "1.2.2"
-  },
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "homepage": "https://github.com/bahmutov/qunit-promises",
-  "keywords": [
-    "plugin",
-    "promises",
-    "qunit",
-    "test"
-  ],
-  "license": "MIT",
-  "main": "qunit-promises.js",
-  "files": [
-    "qunit-promises.js",
-    "bower.json",
-    "History.md"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bahmutov/qunit-promises.git"
-  },
-  "scripts": {
-    "coveralls": "node node_modules/lcov-filter/index.js cover/lcov.info test | ./node_modules/coveralls/bin/coveralls.js",
-    "gt": "gt qunit-promises.js test/node-tests.js --output",
-    "test": "grunt && npm run gt",
-    "test-qunit": "qunit -d ./qunit-promises.js -c test/tests.js -t test/tests.js",
-    "commit": "commit-wizard",
-    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";"
-  },
   "config": {
     "pre-git": {
       "commit-msg": "simple",
@@ -76,5 +21,60 @@
       "post-checkout": [],
       "post-merge": []
     }
+  },
+  "contributors": [],
+  "dependencies": {
+    "allong.es": "0.14.0",
+    "lodash": "4.13.1"
+  },
+  "devDependencies": {
+    "coveralls": "2.11.9",
+    "grunt": "1.0.1",
+    "grunt-bump": "0.7.3",
+    "grunt-cli": "1.2.0",
+    "grunt-complexity": "0.3.0",
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-contrib-qunit": "1.2.0",
+    "grunt-deps-ok": "0.9.0",
+    "grunt-nice-package": "0.10.2",
+    "grunt-node-qunit": "2.0.2",
+    "grunt-npm2bower-sync": "0.9.1",
+    "gt": "0.10.0",
+    "jshint-stylish": "2.2.0",
+    "lcov-filter": "0.1.1",
+    "matchdep": "1.0.1",
+    "pre-git": "3.9.1",
+    "q": "2.0.3",
+    "qunit": "0.9.1",
+    "time-grunt": "1.3.0"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "files": [
+    "qunit-promises.js",
+    "bower.json",
+    "History.md"
+  ],
+  "homepage": "https://github.com/bahmutov/qunit-promises",
+  "keywords": [
+    "plugin",
+    "promises",
+    "qunit",
+    "test"
+  ],
+  "license": "MIT",
+  "main": "qunit-promises.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahmutov/qunit-promises.git"
+  },
+  "scripts": {
+    "commit": "commit-wizard",
+    "coveralls": "node node_modules/lcov-filter/index.js cover/lcov.info test | ./node_modules/coveralls/bin/coveralls.js",
+    "gt": "gt qunit-promises.js test/node-tests.js --output",
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
+    "test": "grunt && npm run gt",
+    "test-qunit": "qunit -d ./qunit-promises.js -c test/tests.js -t test/tests.js"
   }
 }
