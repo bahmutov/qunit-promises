@@ -94,94 +94,94 @@ QUnit.test('compare value using equality', 1, function (assert) {
   assert.willEqual(delayedOne(), 1, 'returns 1');
 });
 
-// QUnit.test('QUnit.equiv', function (assert) {
-//   assert.equal(typeof QUnit.equiv, 'function', 'QUnit.equiv is a function');
-// });
+QUnit.test('QUnit.equiv', function (assert) {
+  assert.equal(typeof QUnit.equiv, 'function', 'QUnit.equiv is a function');
+});
 
-// QUnit.test('promise will resolve with value using deepEqual', function (assert) {
-//   var expected = {
-//     foo: {
-//       bar: true
-//     }
-//   };
-//   assert.willDeepEqual(delayedFooBar(), expected, 'returns equal object');
-// });
+QUnit.test('promise will resolve with value using deepEqual', function (assert) {
+  var expected = {
+    foo: {
+      bar: true
+    }
+  };
+  assert.willDeepEqual(delayedFooBar(), expected, 'returns equal object');
+});
 
-// // regular code to test failed promise
-// QUnit.test('test failed promise', 1, function (assert) {
-//   QUnit.stop();
-//   var promise = delayedHelloFail();
-//   promise.then(function () {
-//     assert.ok(false, 'promise failed to fail!');
-//   }, function (actual) {
-//     assert.equal(actual, 'bye', 'promise failed');
-//   }).finally(QUnit.start);
-// });
+// regular code to test failed promise
+QUnit.test('test failed promise', 1, function (assert) {
+  QUnit.stop();
+  var promise = delayedHelloFail();
+  promise.then(function () {
+    assert.ok(false, 'promise failed to fail!');
+  }, function (actual) {
+    assert.equal(actual, 'bye', 'promise failed');
+  }).finally(QUnit.start);
+});
 
-// QUnit.test('promise will reject', 1, function (assert) {
-//   assert.wont(delayedHelloFail(), 'promise fails');
-// });
+QUnit.test('promise will reject', 1, function (assert) {
+  assert.wont(delayedHelloFail(), 'promise fails');
+});
 
-// QUnit.test('promise will reject with value', 1, function (assert) {
-//   assert.wontEqual(delayedHelloFail(), 'bye');
-// });
+QUnit.test('promise will reject with value', 1, function (assert) {
+  assert.wontEqual(delayedHelloFail(), 'bye');
+});
 
-// QUnit.test('promise will reject with value + message', 1, function (assert) {
-//   assert.wontEqual(delayedHelloFail(), 'bye', 'this is a failed promise');
-// });
+QUnit.test('promise will reject with value + message', 1, function (assert) {
+  assert.wontEqual(delayedHelloFail(), 'bye', 'this is a failed promise');
+});
 
-// QUnit.test('using deep equality', 1, function (assert) {
-//   assert.wontEqual(delayedOneFail(), 1, 'returns 1');
-// });
+QUnit.test('using deep equality', 1, function (assert) {
+  assert.wontEqual(delayedOneFail(), 1, 'returns 1');
+});
 
-// // advanced
-// QUnit.test('two resolved promises in sequence', 1, function (assert) {
-//   assert.willEqual(delayedHello().then(delayedHello), 'hello', 'promises chained');
-// });
+// advanced
+QUnit.test('two resolved promises in sequence', 1, function (assert) {
+  assert.willEqual(delayedHello().then(delayedHello), 'hello', 'promises chained');
+});
 
-// QUnit.test('null promise throws an error', function (assert) {
-//   assert.throws(function () {
-//     assert.will(null, 'this should not resolve');
-//   }, 'null promise causes an error');
-// });
+QUnit.test('null promise throws an error', function (assert) {
+  assert.throws(function () {
+    assert.will(null, 'this should not resolve');
+  }, 'null promise causes an error');
+});
 
-// QUnit.test('invalid promise throws an error', function (assert) {
-//   assert.throws(function () {
-//     assert.will({}, 'this does not have .then');
-//   }, 'invalid promise object causes an error');
-// });
+QUnit.test('invalid promise throws an error', function (assert) {
+  assert.throws(function () {
+    assert.will({}, 'this does not have .then');
+  }, 'invalid promise object causes an error');
+});
 
-// QUnit.test('promise without .always throws an error', function (assert) {
-//   assert.throws(function () {
-//     assert.will({
-//       then: function () {}
-//     }, 'this does not have .always');
-//   }, 'invalid promise object causes an error');
-// });
+QUnit.test('promise without .always throws an error', function (assert) {
+  assert.throws(function () {
+    assert.will({
+      then: function () {}
+    }, 'this does not have .always');
+  }, 'invalid promise object causes an error');
+});
 
-// /* testing async module setup work around */
-// QUnit.module('async setup');
+/* testing async module setup work around */
+QUnit.module('async setup');
 
-// var obj = {
-//   counter: 0,
-//   getCounter: function () {
-//     return this.counter;
-//   }
-// };
+var obj = {
+  counter: 0,
+  getCounter: function () {
+    return this.counter;
+  }
+};
 
-// function initCounter() {
-//   var defer = Q.defer();
-//   setTimeout(function () {
-//     obj.counter += 1;
-//     defer.resolve();
-//   }, 1000);
-//   return defer.promise;
-// }
+function initCounter() {
+  var defer = Q.defer();
+  setTimeout(function () {
+    obj.counter += 1;
+    defer.resolve();
+  }, 1000);
+  return defer.promise;
+}
 
-// QUnit.test('manual async init', function (assert) {
-//   assert.willEqual(initCounter().then(obj.getCounter.bind(obj)), 1);
-// });
+QUnit.test('manual async init', function (assert) {
+  assert.willEqual(initCounter().then(obj.getCounter.bind(obj)), 1);
+});
 
-// QUnit.test('returning value', function (assert) {
-//   assert.willEqual(initCounter().then(function () { return obj.counter; }), 2);
-// });
+QUnit.test('returning value', function (assert) {
+  assert.willEqual(initCounter().then(function () { return obj.counter; }), 2);
+});
