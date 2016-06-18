@@ -44,6 +44,11 @@
   ],
   "license": "MIT",
   "main": "qunit-promises.js",
+  "files": [
+    "qunit-promises.js",
+    "bower.json",
+    "History.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/qunit-promises.git"
@@ -53,19 +58,19 @@
     "gt": "gt qunit-promises.js test/node-tests.js --output",
     "test": "grunt && npm run gt",
     "test-qunit": "qunit -d ./qunit-promises.js -c test/tests.js -t test/tests.js",
-    "commit": "commit-wizard"
+    "commit": "commit-wizard",
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";"
   },
   "config": {
     "pre-git": {
       "commit-msg": "simple",
       "pre-commit": [
         "npm run test",
-        "npm run gt",
-        "npm version"
+        "npm run gt"
       ],
       "pre-push": [
-        "grunt qunit",
-        "npm version"
+        "npm run grunt qunit",
+        "npm run size"
       ],
       "post-commit": [],
       "post-checkout": [],
