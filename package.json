@@ -15,6 +15,7 @@
     "coveralls": "2.11.4",
     "grunt": "0.4.5",
     "grunt-bump": "0.6.0",
+    "grunt-cli": "1.2.0",
     "grunt-complexity": "0.3.0",
     "grunt-contrib-jshint": "0.11.3",
     "grunt-contrib-qunit": "0.7.0",
@@ -28,6 +29,7 @@
     "matchdep": "1.0.0",
     "pre-git": "0.6.2",
     "q": "2.0.3",
+    "qunit": "^0.9.1",
     "time-grunt": "1.2.2"
   },
   "engines": {
@@ -58,6 +60,7 @@
   "scripts": {
     "coveralls": "node node_modules/lcov-filter/index.js cover/lcov.info test | ./node_modules/coveralls/bin/coveralls.js",
     "gt": "gt qunit-promises.js test/node-tests.js --output",
-    "test": "grunt && npm run gt"
+    "test": "grunt && npm run gt",
+    "test-qunit": "qunit -d ./qunit-promises.js -c test/tests.js -t test/tests.js"
   }
 }
