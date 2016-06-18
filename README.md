@@ -11,9 +11,8 @@ QUnit plugin that adds assertions to check promises.
 [![Code Climate][qunit-promises-code-climage-image]][qunit-promises-code-climage-url]
 [![Codacy][qunit-promises-codacy-image]][qunit-promises-codacy-url]
 [![dependencies][dependencies-image]][dependencies-url]
-[![dev dependencies][dev-dependencies-image]][dev-dependencies-url]
 
-[![endorse][endorse-image]][endorse-url]
+[![semantic-release][semantic-image] ][semantic-url]
 
 Available through [bower](http://sindresorhus.com/bower-components/) and
 [npm](https://npmjs.org/package/qunit-promises) as **qunit-promises**.
@@ -69,7 +68,7 @@ assert.will(fn, [expectation [, message]])
 assert.will(fn, [message])
 
 - fn: function that returns a promise that should be resolved
-- expectation: function that will evaluate received result and 
+- expectation: function that will evaluate received result and
   return true / false if it's correct or wrong
 - message (optional): to push in the log
 ```
@@ -180,7 +179,5 @@ License: MIT - do anything with the code, but don't blame me if it does not work
 [qunit-promises-codacy-url]: https://www.codacy.com/public/bahmutov/qunit-promises.git
 [dependencies-image]: https://david-dm.org/bahmutov/qunit-promises.png
 [dependencies-url]: https://david-dm.org/bahmutov/qunit-promises
-[dev-dependencies-image]: https://david-dm.org/bahmutov/qunit-promises/dev-status.png
-[dev-dependencies-url]: https://david-dm.org/bahmutov/qunit-promises#info=devDependencies
-[endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
-[endorse-url]: https://coderwall.com/bahmutov
+[semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-url]: https://github.com/semantic-release/semantic-release
